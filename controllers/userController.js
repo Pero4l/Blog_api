@@ -79,10 +79,9 @@ return res.status(201).json({
 
 async function login(req, res) {
 
-    const token = jwt.sign({userId: req.data.id, role: req.data.role, currentUser: req.data.name}, process.env.JWT_SECRET, {expiresIn: '1h'})
+    const token = jwt.sign({userId: req.data.id, currentUser: req.data.name}, process.env.JWT_SECRET, {expiresIn: '1h'})
 
     const userId = req.data.id
-    const role = req.data.role
     const currentUser = req.data.name
     
     if(req.user){
@@ -91,7 +90,6 @@ async function login(req, res) {
         "message": "Login Successfully",
         "token": token,
         "userId": userId,
-        "role": role,
         "currentUser": currentUser
     })
     }
