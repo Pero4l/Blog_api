@@ -3,7 +3,8 @@ require('dotenv').config()
 const app = express()
 app.use(express.json())
 
-const authUser = require('./routers/user.route')
+const UserRoute = require('./routers/user.route')
+const postRoute = require('./routers/post.route')
 
 
 app.get('/', (req, res) => {
@@ -15,7 +16,8 @@ app.get('/', (req, res) => {
 
 
 
-app.use('/auth', authUser)
+app.use('/auth', UserRoute)
+app.use('/post', postRoute)
 
 
 
