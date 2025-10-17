@@ -3,6 +3,8 @@ require('dotenv').config()
 const app = express()
 app.use(express.json())
 
+const authUser = require('./routers/user.route')
+
 
 app.get('/', (req, res) => {
     res.status(200).json({
@@ -10,6 +12,10 @@ app.get('/', (req, res) => {
         "message": "Welcome to my blog post"
     })
 })
+
+
+
+app.use('/auth', authUser)
 
 
 
